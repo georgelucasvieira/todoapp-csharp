@@ -1,5 +1,6 @@
 using ApiService;
 using Microsoft.AspNetCore.Identity;
+using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,15 @@ builder.Services.AddProblemDetails();
 builder.Services.AddDataProtection(o => o.ApplicationDiscriminator = "TodoApp");
 builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
 builder.Services.AddAuthorizationBuilder().AddCurrentUserAuthHandler();
+
+// Configure identity
+builder.Services.AddIdentityCore<TodoUser>()
+                .AddEntityFrameworkStores<TodoDbContext>()
+                .AddApiEndpoints();
+
+// Configure the database
+var connectionStr = builder.Configuration.GetConnectionString("Todos") ?? "Data Source=.db/Todos.db";
+builder.Services.AddSqlite<TodoDbContext>(connectionStr);
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
