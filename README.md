@@ -1,13 +1,11 @@
-## Todo application with ASP.NET Core
-
-It showcases:
+Vendo o que tem de bão aqui nesses trem:
 - Blazor WebAssembly
 - Minimal APIs
-- Using EntityFramework and SQLite for data access
+- EntityFramework, SQLite
 - OpenAPI
-- User management with ASP.NET Core Identity
-- Cookie authentication
-- Bearer authentication
-- Proxying requests from the front end application server using YARP's IHttpForwarder
+- Auth com ASP.NET Core Identity
+- Cookie auth
+- Bearer auth
+- Proxying requests do front end usando YARP's IHttpForwarder
 - Rate Limiting
-- Writing integration tests for your REST API
+- Integration tests
